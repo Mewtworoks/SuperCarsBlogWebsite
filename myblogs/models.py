@@ -1,5 +1,7 @@
 from django.db import models
 from ckeditor.fields import RichTextField
+from django.contrib.auth.models import User
+from django.utils import timezone    
 
 
 
@@ -28,7 +30,18 @@ class blog_post(models.Model):
     cover_img=models.ImageField(upload_to='images/')
     blog_description=RichTextField(blank=True)
     blog_cat=models.ForeignKey(Blog_Category,on_delete=models.CASCADE)
+    like_count=models.IntegerField(default=0, null=True)
+    view_count=models.IntegerField(default=0, null=True)
 
     def __str__(self):
         return self.blog_name
+
+class Comment(models.Model):
+    post = models.ForeignKey(blog_post, on_delete=models.CASCADE, related_name='comments')
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    text = models.TextField()
+    created_date = models.DateTimeField(default=timezone.now)
+
+    def str(self):
+        return self.text
 

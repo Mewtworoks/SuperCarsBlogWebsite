@@ -33,6 +33,12 @@ urlpatterns = [
     path('loginuser', views.loginuser, name='loginuser'),
     path('signupuser',views.signupuser,name='signupuser'),
     path('logoutuser',views.logoutuser,name='logoutuser'),
+   path('cat/<str:cat_id>/', views.cat, name='cat'),
+   path('add_like/<str:blog_id>/', views.add_like, name='add_like'),
+   path('add_comment/<str:blog_id>/',views.add_comment, name='add_comment'),
+    path('delete_comment/<int:blog_id>/<int:comment_id>/',views.delete_comment, name='delete_comment'),
+    path('edit_comment/<int:blog_id>/<int:comment_id>/', views.edit_comment, name='edit_comment'),
+
     
      
 

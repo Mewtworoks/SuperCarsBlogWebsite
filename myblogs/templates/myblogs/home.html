@@ -23,7 +23,10 @@
 
     </style>
 </head>
-<body class="bg-dark">   
+<body class="bg-dark">
+
+
+
      {% include 'myblogs/navbar.html' %}
 
 
@@ -88,7 +91,7 @@
                     <div class="card-body mt-2">
                         <h5 class="card-title">{{ y.blog_cat }}</h5>
                         <p class="card-text">{{ y.blogcat_description | safe | truncatewords:10 }}</p>
-                        <a href="{% url 'allblogs' %}?category={{ y.blog_cat }}" class="btn btn-primary" style="background-color: #0066cc; border: none;">Click to view more</a>
+                        <a href="{% url 'cat' y.blog_cat %}" class="btn btn-primary" style="background-color: #0066cc; border: none;">Click to view more</a>
                     </div>
                 </div>
             </div>
